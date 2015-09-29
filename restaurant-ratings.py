@@ -6,14 +6,11 @@ restaurant_ratings_dictionary = {}
 
 for restaurant_data in open_restaurant_file:
     restaurant_and_rating = restaurant_data.strip().split(':')
-    restaurant_ratings_dictionary[restaurant_and_rating[0]] = restaurant_and_rating[1]
-
-restaurant_strings = []
-
-for restaurant, rating in restaurant_ratings_dictionary.items():
-    restaurant_strings.append("{} is rated at {}.".format(restaurant, rating))
-
-for string in sorted(restaurant_strings):
-    print string
+    restaurant = restaurant_and_rating[0]
+    rating = restaurant_and_rating[1]
+    restaurant_ratings_dictionary[restaurant] = rating
+    
+for restaurant, rating in sorted(restaurant_ratings_dictionary.items()):
+    print "{} is rated at {}.".format(restaurant, rating)
     
 open_restaurant_file.close()
